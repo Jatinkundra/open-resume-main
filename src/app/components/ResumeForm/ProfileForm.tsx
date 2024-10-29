@@ -1,4 +1,4 @@
-import { BaseForm } from "components/ResumeForm/Form";
+import { Form } from "components/ResumeForm/Form";
 import { Input, Textarea } from "components/ResumeForm/Form/InputGroup";
 import { useAppDispatch, useAppSelector } from "lib/redux/hooks";
 import { changeProfile, selectProfile } from "lib/redux/resumeSlice";
@@ -7,6 +7,7 @@ import { ResumeProfile } from "lib/redux/types";
 export const ProfileForm = () => {
   const profile = useAppSelector(selectProfile);
   const dispatch = useAppDispatch();
+
   const { name, email, phone, url, summary, location } = profile;
 
   const handleProfileChange = (field: keyof ResumeProfile, value: string) => {
@@ -14,7 +15,7 @@ export const ProfileForm = () => {
   };
 
   return (
-    <BaseForm>
+    <Form form="profile" >
       <div className="grid grid-cols-6 gap-3">
         <Input
           label="Name"
@@ -65,6 +66,6 @@ export const ProfileForm = () => {
           onChange={handleProfileChange}
         />
       </div>
-    </BaseForm>
+    </Form>
   );
 };

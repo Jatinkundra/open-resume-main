@@ -47,6 +47,7 @@ export const BaseForm = ({
 );
 
 const FORM_TO_ICON: { [section in ShowForm]: typeof BuildingOfficeIcon } = {
+  profile: LightBulbIcon,
   workExperiences: BuildingOfficeIcon,
   educations: AcademicCapIcon,
   projects: LightBulbIcon,
@@ -90,11 +91,11 @@ export const Form = ({
       }`}
     >
       <div className="flex items-center justify-between gap-4">
-        <div className="flex grow items-center gap-2">
-          <Icon className="h-6 w-6 text-gray-600" aria-hidden="true" />
+        <div className="flex items-center gap-2 grow">
+          <Icon className="w-6 h-6 text-gray-600" aria-hidden="true" />
           <input
             type="text"
-            className="block w-full border-b border-transparent text-lg font-semibold tracking-wide text-gray-900 outline-none hover:border-gray-300 hover:shadow-sm focus:border-gray-300 focus:shadow-sm"
+            className="block w-full text-lg font-semibold tracking-wide text-gray-900 border-b border-transparent outline-none hover:border-gray-300 hover:shadow-sm focus:border-gray-300 focus:shadow-sm"
             value={heading}
             onChange={(e) => setHeading(e.target.value)}
           />
@@ -113,13 +114,13 @@ export const Form = ({
         {children}
       </ExpanderWithHeightTransition>
       {showForm && addButtonText && (
-        <div className="mt-2 flex justify-end">
+        <div className="flex justify-end mt-2">
           <button
             type="button"
             onClick={() => {
               dispatch(addSectionInForm({ form }));
             }}
-            className="flex items-center rounded-md bg-white py-2 pl-3 pr-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            className="flex items-center py-2 pl-3 pr-4 text-sm font-semibold text-gray-900 bg-white rounded-md shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
           >
             <PlusSmallIcon
               className="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400"
@@ -161,7 +162,7 @@ export const FormSection = ({
   return (
     <>
       {idx !== 0 && (
-        <div className="mb-4 mt-6 border-t-2 border-dotted border-gray-200" />
+        <div className="mt-6 mb-4 border-t-2 border-gray-200 border-dotted" />
       )}
       <div className="relative grid grid-cols-6 gap-3">
         {children}

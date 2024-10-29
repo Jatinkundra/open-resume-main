@@ -52,6 +52,14 @@ export const ResumePDF = ({
   const showFormsOrder = formsOrder.filter((form) => formToShow[form]);
 
   const formTypeToComponent: { [type in ShowForm]: () => JSX.Element } = {
+    profile: () => (
+      <ResumePDFProfile
+        heading={formToHeading["profile"]}
+        profile={profile}
+        themeColor={themeColor}
+        isPDF={isPDF}
+      />
+    ),
     workExperiences: () => (
       <ResumePDFWorkExperience
         heading={formToHeading["workExperiences"]}
@@ -119,11 +127,11 @@ export const ResumePDF = ({
               padding: `${spacing[0]} ${spacing[20]}`,
             }}
           >
-            <ResumePDFProfile
+            {/* <ResumePDFProfile
               profile={profile}
               themeColor={themeColor}
               isPDF={isPDF}
-            />
+            /> */}
             {showFormsOrder.map((form) => {
               const Component = formTypeToComponent[form];
               return <Component key={form} />;

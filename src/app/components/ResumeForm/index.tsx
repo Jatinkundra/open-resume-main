@@ -17,6 +17,7 @@ import { FlexboxSpacer } from "components/FlexboxSpacer";
 import { cx } from "lib/cx";
 
 const formTypeToComponent: { [type in ShowForm]: () => JSX.Element } = {
+  profile: ProfileForm,
   workExperiences: WorkExperiencesForm,
   educations: EducationsForm,
   projects: ProjectsForm,
@@ -34,14 +35,13 @@ export const ResumeForm = () => {
   return (
     <div
       className={cx(
-        "flex justify-center scrollbar-thin scrollbar-track-gray-100 md:h-[calc(100vh-var(--top-nav-bar-height))] md:justify-end md:overflow-y-scroll",
-        isHover ? "scrollbar-thumb-gray-200" : "scrollbar-thumb-gray-100"
+        "flex justify-center scrollbar scrollbar-track-gray-100 scrollbar-w-3 md:h-[calc(100vh-var(--top-nav-bar-height))] md:justify-end md:overflow-y-scroll",
+        isHover && "scrollbar-thumb-gray-200"
       )}
       onMouseOver={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
       <section className="flex max-w-2xl flex-col gap-8 p-[var(--resume-padding)]">
-        <ProfileForm />
         {formsOrder.map((form) => {
           const Component = formTypeToComponent[form];
           return <Component key={form} />;
